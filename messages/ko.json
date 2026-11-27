@@ -1516,7 +1516,8 @@
       "fields": "필드 & 태그",
       "deals": "딜 & 통화",
       "members": "팀원",
-      "api": "API 키"
+      "api": "API 키",
+      "import-export": "가져오기 / 내보내기"
     },
     "groups": {
       "account": "계정",

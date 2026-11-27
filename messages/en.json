@@ -1516,7 +1516,8 @@
       "fields": "Fields & tags",
       "deals": "Deals & currency",
       "members": "Team members",
-      "api": "API keys"
+      "api": "API keys",
+      "import-export": "Import / export"
     },
     "groups": {
       "account": "Account",

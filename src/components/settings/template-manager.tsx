@@ -27,6 +27,7 @@ import { Badge } from '@/components/ui/badge';
 import { useTranslations } from 'next-intl';
 import { Card, CardContent } from '@/components/ui/card';
 import { SettingsPanelHead } from './settings-panel-head';
+import { SectionBundleActions } from './section-bundle-actions';
 import {
   Dialog,
   DialogContent,
@@ -487,7 +488,8 @@ export function TemplateManager() {
         title={t('title')}
         description={t('description')}
         action={
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <SectionBundleActions section="templates" label="templates" />
             <Button
               variant="outline"
               onClick={handleSyncFromMeta}

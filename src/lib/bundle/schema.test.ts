@@ -141,8 +141,11 @@ describe('shipped example: Online Onward Tickets bundle', () => {
     expect(f.activate).toBe(false)
   })
 
-  it('never switches auto-reply on by itself', () => {
+  it('only sets the AI instructions and never touches the switches', () => {
     if (!parsed.ok) throw new Error('did not parse')
-    expect(parsed.bundle.ai?.config?.auto_reply_enabled).toBe(false)
+    const cfg = parsed.bundle.ai?.config
+    expect(cfg?.system_prompt).toContain('Online Onward Tickets')
+    expect(cfg?.auto_reply_enabled).toBeUndefined()
+    expect(cfg?.is_active).toBeUndefined()
   })
 })

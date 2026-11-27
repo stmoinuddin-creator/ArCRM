@@ -25,6 +25,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { SettingsPanelHead } from './settings-panel-head';
+import { SectionBundleActions } from './section-bundle-actions';
 import { AiKnowledgeCard } from './ai-knowledge';
 import { AI_PROVIDER_DEFAULT_MODEL } from '@/lib/ai/defaults';
 import type { AiProvider } from '@/lib/ai/types';
@@ -246,6 +247,7 @@ export function AiConfig() {
       <SettingsPanelHead
         title={t('title')}
         description={t('description')}
+        action={<SectionBundleActions section="ai" label="AI instructions and knowledge base" />}
       />
 
       {!canEdit && (

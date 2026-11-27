@@ -14,6 +14,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { SectionBundleActions } from "./section-bundle-actions";
 import { SettingsPanelHead } from "./settings-panel-head";
 import {
   InteractiveBuilder,
@@ -129,10 +130,13 @@ export function QuickRepliesManager() {
         title="Quick replies"
         description="Reusable snippets — plain text or a saved interactive message — that agents can insert from the inbox composer."
         action={
-          <Button onClick={openCreate}>
-            <Plus className="mr-1 h-4 w-4" />
-            New quick reply
-          </Button>
+          <div className="flex flex-wrap items-center gap-2">
+            <SectionBundleActions section="quick_replies" label="quick replies" onDone={() => void load()} />
+            <Button onClick={openCreate}>
+              <Plus className="mr-1 h-4 w-4" />
+              New quick reply
+            </Button>
+          </div>
         }
       />
 

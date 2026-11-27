@@ -24,14 +24,20 @@ export interface MetaPhoneInfo {
 }
 
 interface MetaErrorResponse {
-  error?: { message?: string; code?: number; type?: string }
+  error?: { message?: string; code?: number; type?: string; error_user_msg?: string }
 }
 
 async function throwMetaError(response: Response, fallback: string): Promise<never> {
   let message = fallback
   try {
     const data = (await response.json()) as MetaErrorResponse
-    if (data.error?.message) message = data.error.message
+    if (data.error?.message) {
+      message = data.error.message
+      // Meta's generic messages ("Invalid parameter") hide the real reason in
+      // error_user_msg; surface it so users can act on it.
+      const detail = data.error.error_user_msg
+      if (detail && !message.includes(detail)) message = `${message} — ${detail}`
+    }
   } catch {
     // response body wasn't JSON — keep the fallback
   }
